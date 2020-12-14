@@ -1,4 +1,5 @@
 const affectColor = (color, v) => Math.min(Math.max(color + v, 0), 255);
+const complTo255 = (n) => 255 - n;
 
 export const colorReducer = (previousState, action) => {
   switch (action.type) {

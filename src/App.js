@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Square } from "./components/Square";
 import { useReducer } from "react";
 import { colorReducer } from "./reducers/colorReducer";
+import { PlusMinusButtons } from "./components/PlusMinusButtons";
 
 // Pour rappel: l'attribut 'style' permet en React de faire du style inline
 // On lui donne comme valeur un objet JS représentant le style à appliquer
@@ -42,16 +43,6 @@ const Description = styled.div`
   font-weight: ${(props) => (props.important ? "bold" : "normal")};
 `;
 
-// On pourra avoir comme base, autre chose que des divs
-const Button = styled.button`
-  color: #ff3333;
-  margin: 10px;
-  width: 120px;
-  &:hover {
-    color: #0080ff;
-  }
-`;
-
 /*
 Créer un style pour un composant React pré-existant:
 // à checker, ne fonctionne pas!!
@@ -61,11 +52,16 @@ const NewSquare = styled.css`
   height: 100px;
 `;
 */
-const deltaValue = 60;
 
 function App() {
   const [rgb, dispatch] = useReducer(colorReducer, { r: 120, g: 120, b: 120 });
-
+  const deltaValue = 60;
+  const buttonGroups = [
+    ["rouge", "setR"],
+    ["vert", "setG"],
+    ["bleu", "setB"],
+    ["liminosité", "changeBrightness"],
+  ];
   return (
     <div className="App">
       <header style={appHeader}>
@@ -80,62 +76,18 @@ function App() {
           Vous pouvez ici ajuster les valeur RGB de la couleur principale de
           votre thème.
         </Description>
-        <div>
-          <Button
-            onClick={() => dispatch({ type: "setR", payload: +deltaValue })}
-          >
-            + rouge
-          </Button>
-          <Button
-            onClick={() => dispatch({ type: "setR", payload: -deltaValue })}
-          >
-            - rouge
-          </Button>
-        </div>
-        <div>
-          <Button
-            onClick={() => dispatch({ type: "setG", payload: +deltaValue })}
-          >
-            + vert
-          </Button>
-          <Button
-            onClick={() => dispatch({ type: "setG", payload: -deltaValue })}
-          >
-            - vert
-          </Button>
-        </div>
-        <div>
-          <Button
-            onClick={() => dispatch({ type: "setB", payload: +deltaValue })}
-          >
-            + bleu
-          </Button>
-          <Button
-            onClick={() => dispatch({ type: "setB", payload: -deltaValue })}
-          >
-            - bleu
-          </Button>
-        </div>
-        <div>
-          <Button
-            onClick={() =>
-              dispatch({ type: "changeBrightness", payload: +deltaValue })
-            }
-          >
-            + luminosité
-          </Button>
-          <Button
-            onClick={() =>
-              dispatch({ type: "changeBrightness", payload: -deltaValue })
-            }
-          >
-            - luminosité
-          </Button>
-        </div>
+
+        {buttonGroups.map(([name, type]) => (
+          <PlusMinusButtons
+            name={name}
+            dispatch={dispatch}
+            type={type}
+            payload={deltaValue}
+          ></PlusMinusButtons>
+        ))}
+
         <Square red={rgb.r} blue={rgb.b} green={rgb.g}></Square>
-        <p>Valeur de rouge: {rgb.r}</p>
-        <p>Valeur de vert: {rgb.g}</p>
-        <p>Valeur de bleu: {rgb.b}</p>
+        <p>La couleur obtenue: {`rgb(${rgb.r},${rgb.g},${rgb.b})`}</p>
       </div>
       <Footer></Footer>
     </div>
