@@ -24,6 +24,12 @@ export const colorReducer = (previousState, action) => {
         g: affectColor(previousState.g, action.payload),
         b: affectColor(previousState.b, action.payload),
       };
+    case "complementary":
+      return {
+        r: complTo255(previousState.r),
+        g: complTo255(previousState.g),
+        b: complTo255(previousState.b),
+      };
     default:
       return previousState;
   }

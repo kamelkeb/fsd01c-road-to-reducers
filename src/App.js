@@ -85,6 +85,9 @@ function App() {
             payload={deltaValue}
           ></PlusMinusButtons>
         ))}
+        <button onClick={() => dispatch({ type: "complementary" })}>
+          Complémentaire RGB
+        </button>
 
         <Square red={rgb.r} blue={rgb.b} green={rgb.g}></Square>
         <p>La couleur obtenue: {`rgb(${rgb.r},${rgb.g},${rgb.b})`}</p>
