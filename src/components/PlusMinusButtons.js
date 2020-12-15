@@ -1,12 +1,8 @@
 import { Button } from "./Button";
 
-export const PlusMinusButtons = ({ name, dispatch, type, payload }) => (
+export const PlusMinusButtons = ({ name, affect, payload }) => (
   <div>
-    <Button onClick={() => dispatch({ type: type, payload: +payload })}>
-      + {name}
-    </Button>
-    <Button onClick={() => dispatch({ type: type, payload: -payload })}>
-      - {name}
-    </Button>
+    <Button onClick={() => affect(+payload)}>+ {name}</Button>
+    <Button onClick={() => affect(-payload)}>- {name}</Button>
   </div>
 );

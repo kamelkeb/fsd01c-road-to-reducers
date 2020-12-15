@@ -22,6 +22,7 @@ const Description = styled.div`
 Créer un styled component à partir d'un composant React pré-existant:
 */
 const Sq = ({ className }) => <div className={className} />;
+
 const NewSquare = styled(Sq)`
   background-color: rgb(200, 50, 50);
   color: white;
