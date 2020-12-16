@@ -18,8 +18,8 @@ export const CentralPanel = (props) => {
   const deltaValue = 60;
   const buttonGroups = [
     ["rouge", affectRed],
-    ["vert", affectBlue],
-    ["bleu", affectGreen],
+    ["vert", affectGreen],
+    ["bleu", affectBlue],
     ["liminosité", affectBrightness],
   ];
 

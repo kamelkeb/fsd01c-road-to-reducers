@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 export const Square = styled.div`
   background-color: ${({ red, green, blue }) => `rgb(${red},${green},${blue})`};
@@ -21,3 +22,21 @@ export const Square2 = ({ red, green, blue }) => (
     }}
   ></div>
 );
+
+/*
+Mise en place du typage de props avec PropTypes:
+1- Affecter à un champ propTypes nouvellement créé un objet
+2- Pour chaque propriété que je veux typer, je crée un champ dans cet objet, auquel
+je donne comme valeur quelque chose de la forme: PropTypes.leTypeQueJeVeux
+3- Si je veux marquer la propriété comme requise, j'ajoute à la fin: .isRequired
+
+Pour retrouver les types possibles:
+https://www.npmjs.com/package/prop-types
+
+*/
+
+Square.propTypes = {
+  red: PropTypes.number.isRequired,
+  blue: PropTypes.number.isRequired,
+  green: PropTypes.number.isRequired,
+};
