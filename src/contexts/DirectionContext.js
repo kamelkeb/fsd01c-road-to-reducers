@@ -13,8 +13,13 @@ const affectDirection = (max, value, delta) =>
 
 // 1- Choisir l'état initial (sa forme, sa valeur)
 const initialState = {
-    x: 0,
-    y: 0,
+  x: 0,
+  y: 0,
+};
+
+const gridShape = {
+  height: 8,
+  width: 12,
 };
 
 /*
@@ -29,7 +34,7 @@ Attention: la modification du state devra se faire de façon immutable (ne pas m
   sur place l'objet state)
 */
 /*
-** Pour le payload, identifier la forme de la grille, ainsi que le degré de décallage de x & y. 
+** Pour le payload, identifier la forme de la grille, ainsi que le degré de décallage de x & y.
     { gridHeight: 8, gridWidth: 12, deltaX: +1, deltaY: +1 }
 */
 export const directionReducer = (
@@ -40,16 +45,8 @@ export const directionReducer = (
     case "casualMoves":
       return {
         ...previousState,
-        x: affectDirection(
-          gridWidth,
-          previousState.x,
-          deltaX
-        ),
-        y: affectDirection(
-          gridHeight,
-          previousState.y,
-          deltaY
-        ),
+        x: affectDirection(gridWidth, previousState.x, deltaX),
+        y: affectDirection(gridHeight, previousState.y, deltaY),
       };
     default:
       return previousState;
@@ -70,12 +67,16 @@ export const directionReducer = (
   à dispatch, voire celle écrite de façon non raccourcie pour mieux comprendre le pattern.
 */
 
-const move = (dispatch) => (gridHeight, gridWidth, deltaX, deltaY) =>
+const move = (dispatch) => (deltaX, deltaY) =>
   dispatch({
     type: "casualMoves",
-    payload: { gridHeight, gridWidth, deltaX, deltaY },
-});
-
+    payload: {
+      gridHeight: gridShape.height,
+      gridWidth: gridShape.width,
+      deltaX: deltaX,
+      deltaY: deltaY,
+    },
+  });
 
 // 4- Créer un contexte vide (sans passer d'argument à createContext)
 export const Context = React.createContext();
@@ -102,6 +103,7 @@ export const Provider = ({ children }) => {
   return (
     <Context.Provider
       value={{
+        gridShape: gridShape,
         position: position,
         move: move(dispatch),
       }}

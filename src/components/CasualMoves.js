@@ -9,39 +9,39 @@ export const CasualMoves = () => {
       <div>
         <ArrowButton
           direction="N-O"
-          clickHandler={() => move(8, 12, -1, -1)}
+          clickHandler={() => move(-1, -1)}
         ></ArrowButton>
         <ArrowButton
           direction="N"
-          clickHandler={() => move(8, 12, -1, 0)}
+          clickHandler={() => move(-1, 0)}
         ></ArrowButton>
         <ArrowButton
           direction="N-E"
-          clickHandler={() => move(8, 12, -1, +1)}
+          clickHandler={() => move(-1, +1)}
         ></ArrowButton>
       </div>
       <div>
         <ArrowButton
           direction="O"
-          clickHandler={() => move(8, 12, 0, -1)}
+          clickHandler={() => move(0, -1)}
         ></ArrowButton>
         <ArrowButton
           direction="E"
-          clickHandler={() => move(8, 12, 0, +1)}
+          clickHandler={() => move(0, +1)}
         ></ArrowButton>
       </div>
       <div>
         <ArrowButton
           direction="S-O"
-          clickHandler={() => move(8, 12, +1, -1)}
+          clickHandler={() => move(+1, -1)}
         ></ArrowButton>
         <ArrowButton
           direction="S"
-          clickHandler={() => move(8, 12, +1, 0)}
+          clickHandler={() => move(+1, 0)}
         ></ArrowButton>
         <ArrowButton
           direction="S-E"
-          clickHandler={() => move(8, 12, +1, +1)}
+          clickHandler={() => move(+1, +1)}
         ></ArrowButton>
       </div>
     </div>
