@@ -7,7 +7,7 @@ const PrimitiveCell = (props) => {
 export const Cell = styled(PrimitiveCell)`
   width: 35px;
   height: 35px;
-  background-color: #a9a9a9;
+  background-color: ${(props) => (props.content === "X" ? "green" : "#a9a9a9")};
   border: 5px solid;
   display: flex;
   justify-content: center;

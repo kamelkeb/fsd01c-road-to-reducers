@@ -16,14 +16,14 @@ const createBoardStructure = (height, width, x, y) => {
 };
 
 export const Board = ({ height, width }) => {
-  const { position } = useContext(PositionContext);
-  return createBoardStructure(height, width, position.x, position.y).map(
-    (element) => (
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        {element.map((character) => (
-          <Cell content={character}></Cell>
-        ))}
-      </div>
-    )
-  );
+  const {
+    position: { x, y },
+  } = useContext(PositionContext);
+  return createBoardStructure(height, width, x, y).map((element) => (
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      {element.map((character) => (
+        <Cell content={character}></Cell>
+      ))}
+    </div>
+  ));
 };

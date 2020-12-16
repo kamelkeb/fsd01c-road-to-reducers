@@ -23,7 +23,7 @@ IMPORTANT: revenir vers le formateur si on bloque, ne pas hésiter à poser des 
 
 
 TP(suite) (aprem 16/12)
-1- Mettre en place dans la fonction 'move' un mécanisme de vérification pour que les deltaX/Y ne fassent pas
+1- Mettre en place dans la fonction reducer, dans le corp d'un case, un mécanisme de vérification pour que les deltaX/Y ne fassent pas
 sortir la position du board (on pourra utiliser la fonction helper 'isPositionInsideBoard'
 2- Créer un nouveau composant block de 4 boutons pour des déplacement de "téléportation" vers respectivement, les coins haut gauche, haut droit, bas gauche et bas droit du board.
 

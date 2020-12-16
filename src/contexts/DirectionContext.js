@@ -8,18 +8,20 @@ Axe I: Les définitions ici bas, dans un même fichier, un fichier par ressource
 
 // 0- Si tu vois l'utilité de disposer de helpers de manipulation de la donnée (logique métier),
 // implémente-les au besoin
+/*
 const affectDirection = (max, value, delta) => {
-  /*
-  On peut return ceci en une seule expression:
-  delta + value > 0 ? (delta + value) % max : ((delta + value) % max) + max
-  ou cela:
-  */
+
+  //On peut return ceci en une seule expression:
+  //delta + value > 0 ? (delta + value) % max : ((delta + value) % max) + max
+  //ou cela:
+
   const rest = (value + delta) % max;
   return rest >= 0 ? rest : rest + max;
 };
 
-const isPositionInsideBoard = (boardShape, position) =>
-  position.x < boardShape.width && position.y < boardShape.width;
+*/
+const isPositionInsideBoard = ({ height, width }, { x, y }) =>
+  0 <= x && x < width && 0 <= y && y < height;
 
 // 1- Choisir l'état initial (sa forme, sa valeur)
 const initialState = {
@@ -49,15 +51,19 @@ Attention: la modification du state devra se faire de façon immutable (ne pas m
 */
 export const directionReducer = (
   previousState,
-  { type, payload: { boardHeight, boardWidth, deltaX, deltaY } }
+  { type, payload: { deltaX, deltaY, absoluteX, absoluteY } }
 ) => {
   switch (type) {
-    case "casualMoves":
-      return {
-        ...previousState,
-        x: affectDirection(boardWidth, previousState.x, deltaX),
-        y: affectDirection(boardHeight, previousState.y, deltaY),
+    case "relativeMoves":
+      const newPosition = {
+        x: deltaX + previousState.x,
+        y: deltaY + previousState.y,
       };
+      return isPositionInsideBoard(boardShape, newPosition)
+        ? newPosition
+        : previousState;
+    case "absoluteMoves":
+      return { x: absoluteX, y: absoluteY };
     default:
       return previousState;
   }
@@ -78,15 +84,20 @@ export const directionReducer = (
 */
 
 const move = (dispatch) => (deltaX, deltaY) =>
-  // Checker avant de dispatcher, que les vauleurs de delta ne nous feront
-  // sortir de la board
   dispatch({
-    type: "casualMoves",
+    type: "relativeMoves",
     payload: {
-      boardHeight: boardShape.height,
-      boardWidth: boardShape.width,
       deltaX: deltaX,
       deltaY: deltaY,
+    },
+  });
+
+const goto = (dispatch) => (absX, absY) =>
+  dispatch({
+    type: "absoluteMoves",
+    payload: {
+      absoluteX: absX,
+      absoluteY: absY,
     },
   });
 
@@ -118,6 +129,7 @@ export const Provider = ({ children }) => {
         gridShape: boardShape,
         position: position,
         move: move(dispatch),
+        goto: goto(dispatch),
       }}
     >
       {children}

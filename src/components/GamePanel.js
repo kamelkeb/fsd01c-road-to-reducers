@@ -5,6 +5,7 @@ import { CasualMoves } from "./CasualMoves";
 import { SpecialMoves } from "./SpecialMoves";
 import { Board } from "./Board";
 import { Context as PositionContext } from "../contexts/DirectionContext";
+import { TeleportMoves } from "./TeleportMoves";
 
 export const GamePanel = () => {
   const { gridShape } = useContext(PositionContext);
@@ -20,6 +21,7 @@ export const GamePanel = () => {
       >
         <CasualMoves></CasualMoves>
         <SpecialMoves></SpecialMoves>
+        <TeleportMoves></TeleportMoves>
       </div>
     </div>
   );
