@@ -33,6 +33,19 @@ je donne comme valeur quelque chose de la forme: PropTypes.leTypeQueJeVeux
 Pour retrouver les types possibles:
 https://www.npmjs.com/package/prop-types
 
+Remarque: on peut s'amuser (de façon utile), à spécifier des structures de type
+un peu plus complexe comme dans:
+Post.propTypes = {
+  comment: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      start: PropTypes.number,
+      content: PropTypes.string,
+      email: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
+}
+
 */
 
 Square.propTypes = {
