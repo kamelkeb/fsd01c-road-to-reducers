@@ -8,8 +8,18 @@ Axe I: Les définitions ici bas, dans un même fichier, un fichier par ressource
 
 // 0- Si tu vois l'utilité de disposer de helpers de manipulation de la donnée (logique métier),
 // implémente-les au besoin
-const affectDirection = (max, value, delta) =>
-  Math.min(Math.max(delta + value, 0), max);
+const affectDirection = (max, value, delta) => {
+  /*
+  On peut return ceci en une seule expression:
+  delta + value > 0 ? (delta + value) % max : ((delta + value) % max) + max
+  ou cela:
+  */
+  const rest = (value + delta) % max;
+  return rest >= 0 ? rest : rest + max;
+};
+
+const isPositionInsideBoard = (boardShape, position) =>
+  position.x < boardShape.width && position.y < boardShape.width;
 
 // 1- Choisir l'état initial (sa forme, sa valeur)
 const initialState = {
@@ -17,9 +27,9 @@ const initialState = {
   y: 0,
 };
 
-const gridShape = {
-  height: 8,
+const boardShape = {
   width: 12,
+  height: 8,
 };
 
 /*
@@ -39,14 +49,14 @@ Attention: la modification du state devra se faire de façon immutable (ne pas m
 */
 export const directionReducer = (
   previousState,
-  { type, payload: { gridHeight, gridWidth, deltaX, deltaY } }
+  { type, payload: { boardHeight, boardWidth, deltaX, deltaY } }
 ) => {
   switch (type) {
     case "casualMoves":
       return {
         ...previousState,
-        x: affectDirection(gridWidth, previousState.x, deltaX),
-        y: affectDirection(gridHeight, previousState.y, deltaY),
+        x: affectDirection(boardWidth, previousState.x, deltaX),
+        y: affectDirection(boardHeight, previousState.y, deltaY),
       };
     default:
       return previousState;
@@ -68,11 +78,13 @@ export const directionReducer = (
 */
 
 const move = (dispatch) => (deltaX, deltaY) =>
+  // Checker avant de dispatcher, que les vauleurs de delta ne nous feront
+  // sortir de la board
   dispatch({
     type: "casualMoves",
     payload: {
-      gridHeight: gridShape.height,
-      gridWidth: gridShape.width,
+      boardHeight: boardShape.height,
+      boardWidth: boardShape.width,
       deltaX: deltaX,
       deltaY: deltaY,
     },
@@ -103,7 +115,7 @@ export const Provider = ({ children }) => {
   return (
     <Context.Provider
       value={{
-        gridShape: gridShape,
+        gridShape: boardShape,
         position: position,
         move: move(dispatch),
       }}

@@ -4,4 +4,5 @@ import styled from "styled-components/macro";
 export const Description = styled.div`
   font-size: 0.8em;
   font-weight: ${(props) => (props.important ? "bold" : "normal")};
+  margin: 4px;
 `;

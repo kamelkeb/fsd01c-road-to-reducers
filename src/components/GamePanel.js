@@ -12,11 +12,15 @@ export const GamePanel = () => {
     <div style={{ ...centralPanelStyle, margin: "10vh" }}>
       <Description important> THE GAME !!!</Description>
       <Description>
-        Vous pouvez ici vous déplacer de cellule en cellule. Merci Kamel !
+        Vous pouvez ici vous déplacer de cellule en cellule !
       </Description>
       <Board height={gridShape.height} width={gridShape.width}></Board>
-      <CasualMoves></CasualMoves>
-      <SpecialMoves></SpecialMoves>
+      <div
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <CasualMoves></CasualMoves>
+        <SpecialMoves></SpecialMoves>
+      </div>
     </div>
   );
 };
