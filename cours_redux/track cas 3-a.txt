@@ -1,0 +1,58 @@
+- Slides redux intro 1
+- voir les exmple dans vs code extensivement
+
+- créer l'app
+
+- revenir sur les core concepts dans les slides
+
+-> à 13h45 le 17/12 on en est ici
+
+https://redux.js.org/tutorials/essentials/part-1-overview-concepts
+https://redux.js.org/tutorials/essentials/part-2-app-structure
+
+utiliser l'API:
+https://redux.js.org/api/api-reference
+
+Tuto Dan:
+https://egghead.io/courses/getting-started-with-redux
+
+Tuto connecter react à redux:
+https://css-tricks.com/learning-react-redux/
+
+Pourquoi utiliser react et redux ensembles:
+https://react-redux.js.org/introduction/why-use-react-redux
+
+Construire des app react avec redux: (suite tuto dan)
+https://egghead.io/courses/building-react-applications-with-idiomatic-redux
+
+
+https://redux.js.org/tutorials/essentials/part-3-data-flow
+
+https://redux.js.org/tutorials/essentials/part-4-using-data
+
+https://redux.js.org/tutorials/essentials/part-5-async-logic
+
+
+
+
+ressources et outils: 
+redux dev tools (très très utile:
+https://github.com/zalmoxisus/redux-devtools-extension
+https://blog.logrocket.com/redux-devtools-tips-tricks-for-faster-debugging/
+
+
+vidéo Dan Abramov (à une époque où les functional components n'avaient pas de state)
+https://www.youtube.com/watch?v=xsSnOQynTHs&feature=youtu.be
+
+
+slides (avec des pincettes):
+https://blog.isquaredsoftware.com/presentations/2018-03-redux-fundamentals/#/0
+
+mini cours (avec des pincettes):
+https://www.tutorialspoint.com/redux/redux_tutorial.pdf 
+
+
+
+
+
+
