@@ -1,0 +1,15 @@
+Exercice de synthèse:
+    
+    Créer une section dans notre application web, qui contiendra un bouton. Chaque clique sur le bouton devra générer une nouvelle petite <div> ayant une couleur d'arrière plan aléatoire.
+    
+Même exercice en mode étape par étape:
+    
+    a- Créer dans le même app.js, sans rien supprimer dans ce fichier, un nouvel état ayant pour valeur initiale le tableau vide []
+    b- Créer une fonction d'aide qui renvoie une couleur aléatoire à chaque fois qu'on l'appel (le format de la couleur est laissé à votre convenance)
+    c- Créer un bouton qui va à chaque clique ajouter un élément à ce tableau, cet élément ser une coleur aléatoire obtenue en appelant la fonction définie au point b.
+    d- Mettre dans le JSX, juste après le bouton, des divs de hauteur et largeur fixées d'avance avec comme couleur d'arrière plan les couleurs présentes dans le tableau. On utilisera un "map" qui renverra pour chaque item du tableau, une div ayant la bonne couleur d'arrière plan.
+    
+    En cas de blocage total ou de complétion de l'exercice, se manifester dans la discussion publique.
+    
+Attention: il y a un petit piège: sachant que l'état est un array, qu'un clique va engendrer un nouvel état, que ce nouvel état sera un array équivalent avec un élément en plus, on peut être tentés de modifier directement l'array ou de passer l'array modifié au setter. Ce serai une erreur. La raison? On aurait fait une mutation par nous même!!
+La bonne façon de faire consiste à fournir un nouvel array au setter, ce nouvel array contiendra les éléments de l'ancien plus le nouvel élément. Rappelez vous de la "shallow copy" ou copie superficielle. Ce que l'on voudra faire sera une copie immutable d'un array avec ajout d'un élément

@@ -1,0 +1,73 @@
+ 
+Créer une application React.js:
+    npx create-react-app nom_app
+    
+Puis naviguer vers le dossier créé et tapper dans le terminal:
+    
+    npm start
+    
+Modification:
+Aller dans le dossier src, ouvrir le fichier app.js, effacer les balises <p> et <a> et les remplacer par:
+    <p>Hello World!</p>
+    
+Puis sauvegarder le fichier
+
+
+Pattern MVC: c'est un pattern général, très commun, consistant à séparer le code selon les "préoccupations":
+    M: Modèle, la structuration du contenu ou de la donnée
+    V:  La vue, la présentation, le style
+    C:  Controleur, qui est le comportement.
+    
+
+
+Mutabilité: un objet est mutable si son état peut changer sans que son identité ne soit altérée. Il est dit immutable si son état ne peut pas changer.
+
+Effet de bord: le fait d'altérer ou de modifier l'état à l'extérieur de la portée du code qui s'exécute.
+
+Fonction pure: fonction qui n'effectue aucun effet de bord
+
+RQ: Le simple usage de l'opérateur '...' ne garanti pas une copie profonde, il faut s'en assurer en fonction de la donnée à copier.
+
+Passage de props:
+    On peut sans se considérer plasphémer, traduire mentalement une écriture JSX
+    <MyButton titre="Home" description="Lorem ipsummmmmmm"/> 
+    
+    En appel de fonction: 
+        MyButton( {titre:"Home", description:"Lorem ipsummmmmmm"} )
+        
+        En effet un composant étant une fonction, les attribut lui sont passé par React comme les champs d'un objet, cet objet sera le seul argument présent lors de la définition du composant.
+        
+        Le JSX n'est qu'une écriture commode, qui sera traduite en JavaScript pur.
+
+Copie supérficielle.
+: c'est une copie d'un seul étage d'imbrication seulement
+
+Add-ons VS Code à installer:
+    ES7 React/Redux/GraphQL/React-Native snippets
+    Prettier Now (ou tout autre outil de formatage automatique du code)
+
+Repo de travail séance 1:
+    https://github.com/kamelkeb/confined-ones.git
+    
+pour initialiser, après avoir cloné, naviguer vers le dossier puis:
+    npm install 
+puis:
+    npm start
+    
+Exercice1:
+    - Lire les fichiers et comprendre comment ils s'articulent, poser des questions en cas de souci de compréhension.
+    - Ajouter un troisième bouton ayant pour titre 'Contenu'  au milieu des deux autres
+    
+Exercice2:
+    Centrez SVP le texte contenu dans les boutons (il s'agit d'appliquer le bon style au bon endroit)
+    
+Résolu par: Amera, Lee-Roy, Christophe, Olivier, Nicolas, Victor, Cédric, Anastasia 
+
+Exercice 3:
+    Créer un composant conteneur 'Content' en dessous du Header, y mettre quelques composants Card (que vous aurez é créer aussi.
+    Une Card prendra en props un titre et une description qu'elle affichera.
+    La hauteur et la largeur d'une Card devront être hard coded en 'px' dans un fichier module.css
+
+
+    
+

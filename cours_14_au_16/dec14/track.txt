@@ -1,0 +1,84 @@
+1- CSS in JS:
+La notion, les librairies, les pros et cons.
+https://www.youtube.com/watch?v=zoFb8IgpYFA
+
+● Sans librairies:
+
+*********Style inline
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const styleMe = <h1 style={{ background: 'lightblue', color: 'darkred' }}>Please style me! I am so bland!</h1>;
+
+ReactDOM.render(
+	styleMe, 
+	document.getElementById('app')
+);
+
+
+
+**********Style extrait dans un objet JS:
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const styles = {
+  background: 'lightblue', color: 'darkred'
+}
+const styleMe = <h1 style={styles}>Please style me! I am so bland!</h1>;
+
+ReactDOM.render(
+	styleMe, 
+	document.getElementById('app')
+);
+
+
+
+************* syntaxe des noms de style:
+fontSize 
+marginTop 
+etc
+
+
+************ syntaxe des valeurs:
+"450px" or "20%", que des strings.
+Si un nombre est mis sans unité derrière, px est supposé.
+
+
+***********partage du style entre différents composants
+
+le mettre dans un fichier js, l'exporter, l'importer ailleurs, l'appliquer en le passant à une props 'style'
+
+rq: si modif, modif immutable!
+
+
+************* styled components:
+https://putaindecode.io/articles/introduction-a-styled-components/
+
+https://styled-components.com/docs/basics
+
+
+
+TP:
+Réaliser une app permettant d'ajuster via des boutons créés avec styled-components, d'ajuster
+une couleur en influant séparément sur les valeurs rgb, et aussi communément pour modifier la
+luminausité.
+
+Factoriser à souhait jusqu'aux limites permises par les notions déjà apprises.
+
+************** useReducer
+* Notion de reducer, action, action.type et action.payload
+* Créer un reducer
+* Appliquer useReducer pour générer un state complexe et une fonction dispatch
+* Utiliser dispatch pour modifier l'état
+
+
+Suite de celui commencé il y a un mois:
+https://www.robinwieruch.de/react-hooks-fetch-data
+
+
+
+
+
+

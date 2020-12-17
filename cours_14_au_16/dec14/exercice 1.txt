@@ -1,0 +1,45 @@
+Contenu fichier App.js
+import "./App.css";
+import { centralPanelStyle } from "./styles";
+
+// Pour rappel: l'attribut 'style' permet en React de faire du style inline
+// On lui donne comme valeur un objet JS représentant le style à appliquer
+
+// La modification inline de l'objet de style est ici seulement
+// pour illustrer la manière de faire immutable.
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header"></header>
+      <div style={{ ...centralPanelStyle, margin: "10vh" }}>
+      
+Contenu fichier styles.js:
+// On peut définir un objet contenant notre style:
+/*
+- Les noms de propriétés doivent être transformés en camelCase
+- Virgules à la place des points virgule CSS
+- Les valeurs données doivent être en string, si on donne number il sera considéré
+comme étant en 'px'. Quelque soit l'unité différente de 'px', il faudra la préciser
+explicitement
+*/
+
+export const centralPanelStyle = {
+  minWidth: "60vh",
+  minHeight: "72vh",
+  backgroundColor: "bisque",
+  margin: 20,
+};
+Vous10:54
+Exercice:
+Appliquez ce que vous venez d'apprendre, pour convertir le style présent dans App.css en objet JS présent dans le fichier styles.js:
+.App-header {
+  background-color: #282c34;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+Importez et appliquer ce style au header dans le fichier App.js
